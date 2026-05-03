@@ -34,11 +34,11 @@ export function useData() {
   return { data, loading, save, reload: load };
 }
 
-export async function askAI(prompt, system) {
+export async function askAI(prompt, system, max_tokens) {
   const res = await fetch("/api/ai", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt, system }),
+    body: JSON.stringify({ prompt, system, max_tokens }),
   });
   const d = await res.json();
   if (d.error) throw new Error(d.error);

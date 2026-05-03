@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
 
-  const { prompt, system } = req.body;
+  const { prompt, system, max_tokens } = req.body;
   if (!prompt) return res.status(400).json({ error: "Missing prompt" });
 
   const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     },
     body: JSON.stringify({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 500,
+      max_tokens: typeof max_tokens === "number" && max_tokens > 0 ? Math.min(max_tokens, 8192) : 500,
       system: system || "You are a helpful assistant.",
       messages: [{ role: "user", content: prompt }],
     }),

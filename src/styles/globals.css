@@ -21,3 +21,15 @@ input, textarea, button, select {
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #111118; }
 ::-webkit-scrollbar-thumb { background: #2d2d3d; border-radius: 2px; }
+
+/* Mobile: bump everything ~15% for readability on phones */
+@media (max-width: 640px) {
+  body {
+    zoom: 1.15;
+  }
+  /* Bump the scrolling manifestation a bit more — it was the smallest text */
+  .manifest {
+    font-size: 17px !important;
+    line-height: 1.7 !important;
+  }
+}

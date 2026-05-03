@@ -142,7 +142,7 @@ export default function Home() {
               </div>
             ) : (
               <div style={{ position: "relative", overflow: "hidden", borderRadius: 16, background: "linear-gradient(135deg,#0f0a1e,#1a0a2e,#0a1020)", border: "1px solid #7c3aed44", padding: "18px 20px 14px" }}>
-                <style>{`@keyframes marquee{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}.manifest{display:inline-block;animation:marquee 20s linear infinite;white-space:nowrap}.manifest:hover{animation-play-state:paused}`}</style>
+                <style>{`@keyframes marquee{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}.manifest{display:inline-block;animation:marquee 60s linear infinite;white-space:nowrap}.manifest:hover{animation-play-state:paused}`}</style>
                 <div style={{ fontSize: 10, letterSpacing: ".2em", color: "#a78bfa", textTransform: "uppercase", marginBottom: 8 }}>✨ Our Manifestation ✨</div>
                 <div style={{ overflow: "hidden" }}>
                   <div className="manifest" style={{ fontSize: 15, fontStyle: "italic", color: "#e9d5ff", lineHeight: 1.6 }}>
