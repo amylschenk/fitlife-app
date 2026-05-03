@@ -1,0 +1,79 @@
+# FitLife PWA — Amy & Karl
+
+## Deploy to Vercel in 5 steps
+
+### Step 1 — Create GitHub repo
+1. Go to github.com → New repository
+2. Name it: `fitlife-app`
+3. Keep it private
+4. Click "Create repository"
+
+### Step 2 — Upload these files
+1. On your Mac, open Terminal
+2. Run these commands:
+```
+cd ~/Downloads
+git clone https://github.com/YOUR_USERNAME/fitlife-app
+```
+3. Copy all the files from this folder into the cloned repo folder
+4. Then run:
+```
+cd fitlife-app
+git add .
+git commit -m "Initial deploy"
+git push
+```
+
+### Step 3 — Deploy on Vercel
+1. Go to vercel.com → Add New Project
+2. Import your `fitlife-app` GitHub repo
+3. Framework: Next.js (auto-detected)
+4. Click Deploy
+
+### Step 4 — Set up Vercel KV (database)
+1. In your Vercel project → Storage tab
+2. Click "Create Database" → KV
+3. Name it `fitlife-kv`
+4. Click Connect — Vercel auto-adds the env variables
+
+### Step 5 — Add Anthropic API key
+1. In Vercel project → Settings → Environment Variables
+2. Add: `ANTHROPIC_API_KEY` = your API key from console.anthropic.com
+3. Redeploy (Settings → Deployments → Redeploy)
+
+### Your app URLs will be:
+- Home: `https://fitlife-app.vercel.app/`
+- Amy's Challenge: `https://fitlife-app.vercel.app/amy`
+- Karl's Challenge: `https://fitlife-app.vercel.app/karl`
+
+### Add to phone home screen:
+**iPhone:** Open in Safari → Share button → "Add to Home Screen"
+**Android:** Open in Chrome → 3-dot menu → "Add to Home Screen"
+
+Both phones should use `https://fitlife-app.vercel.app/` as the shortcut.
+The app opens full screen like a native app.
+
+## Need to update Karl's challenge?
+1. Edit `src/pages/karl.js` — update the CHALLENGE_DATA import or add custom data
+2. `git add . && git commit -m "Update Karl challenge" && git push`
+3. Vercel auto-redeploys in ~30 seconds
+
+## Project structure
+```
+src/
+  pages/
+    index.js      ← Home dashboard (/, /home)
+    amy.js        ← Amy's challenge (/amy)
+    karl.js       ← Karl's challenge (/karl)
+    api/
+      data.js     ← API: read/write shared data
+      ai.js       ← API: Coach + horoscope AI
+  data/
+    index.js      ← All workout, food, music data
+  hooks/
+    useData.js    ← Shared data fetching hook
+  lib/
+    storage.js    ← Vercel KV database helper
+  styles/
+    globals.css   ← Global styles
+```
